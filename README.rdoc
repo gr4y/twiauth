@@ -3,6 +3,7 @@
 == Description
 
 tiwauth is an short and simple oauth wrapper for twitter.
+You need to register an application of the type desktop application on dev.twitter.com first!
 
 == Example
 

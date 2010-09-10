@@ -4,6 +4,13 @@
 
 tiwauth is an short and simple oauth wrapper for twitter.
 
+== Example
+
+    @oauth = TwiAuth::OAuth.new(@oauth_key, @oauth_secret)
+    @oauth.get('/1/statuses/home_timeline.json')
+
+This returns your timeline in the json format. You still need to parse it with the json library of your choise.    
+
 == Testing
 
 the tests are very poor, but it's hard to test

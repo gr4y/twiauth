@@ -8,10 +8,12 @@ module TwiAuth
             :authorize_path => '/oauth/authorize'
     }
 
-    ACCESS_TOKEN = 'access_token.yml'
+    # key for access token
+    ACCESS_TOKEN = 'ACCESS_TOKEN'
 
     public
     def initialize(key, secret)
+      @store = TwiAuth::Store.new
       @oauth_consumer = ::OAuth::Consumer.new(key, secret, TWITTER_OAUTH_SPEC)
       get_access_token
     end
@@ -25,9 +27,7 @@ module TwiAuth
     end
 
     def drop_access_token
-      if ::File.exists?(ACCESS_TOKEN)
-        ::File.delete(ACCESS_TOKEN)
-      end
+      @store.delete(ACCESS_TOKEN)
     end
 
     private
@@ -56,15 +56,11 @@ module TwiAuth
     end
 
     def pull_access_token
-      if ::File.exists?(ACCESS_TOKEN)
-        @access_token = ::YAML.load_file(ACCESS_TOKEN)
-      end
+      @store.get(ACCESS_TOKEN)
     end
 
     def persist_access_token
-      ::File.open(ACCESS_TOKEN, 'w') do |out|
-        YAML.dump(@access_token, out)
-      end
+      @store.put(ACCESS_TOKEN,@access_token)
     end
 
   end

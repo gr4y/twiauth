@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{twiauth}
-  s.version = "0.0.2"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Sascha Wessel"]
-  s.date = %q{2010-09-10}
+  s.date = %q{2010-09-12}
   s.description = %q{simple twitter authentication wrapper}
   s.email = %q{swessel@gr4yweb.de}
   s.extra_rdoc_files = [
@@ -23,11 +23,12 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/twiauth.rb",
-     "lib/twiauth/handler.rb",
      "lib/twiauth/oauth.rb",
+     "lib/twiauth/store.rb",
      "spec/config.yml.sample",
      "spec/oauth_spec.rb",
      "spec/spec_helper.rb",
+     "spec/store_spec.rb",
      "twiauth.gemspec"
   ]
   s.homepage = %q{http://github.com/gr4y/twiauth}
@@ -37,7 +38,8 @@ Gem::Specification.new do |s|
   s.summary = %q{a very simple twitter authentication wrapper}
   s.test_files = [
     "spec/spec_helper.rb",
-     "spec/oauth_spec.rb"
+     "spec/oauth_spec.rb",
+     "spec/store_spec.rb"
   ]
 
   if s.respond_to? :specification_version then

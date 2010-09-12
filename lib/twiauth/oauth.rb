@@ -56,7 +56,7 @@ module TwiAuth
     end
 
     def pull_access_token
-      @store.get(ACCESS_TOKEN)
+      @access_token = @store.get(ACCESS_TOKEN)
     end
 
     def persist_access_token

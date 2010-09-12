@@ -22,3 +22,4 @@ pkg
 .idea
 **/config.yml
 access_token.yml
+*.pstore

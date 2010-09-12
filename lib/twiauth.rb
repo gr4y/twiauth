@@ -1,5 +1,6 @@
 require 'oauth'
 require 'twiauth/oauth'
+require 'twiauth/store'
 require 'yaml'
 
 module TwiAuth

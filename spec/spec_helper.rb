@@ -12,11 +12,3 @@ end
 def parse_json(object)
   JSON.parser.new(object).parse
 end
-
-def assign(key, value, object)
-  object.instance_variable_set("@#{key}", value)
-end
-
-def pull(key, object)
-  object.instance_variable_get("@#{key}")
-end

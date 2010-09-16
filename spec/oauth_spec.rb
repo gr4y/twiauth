@@ -18,7 +18,7 @@ describe TwiAuth::OAuth do
   it "should post and delete a status" do
     response = @oauth.post("/1/statuses/update.json", {:status => 'test status'})
     json = parse_json(response.body)
-    @oauth.get("/1/statuses/destroy/#{json['id']}.json")
+    @oauth.post("/1/statuses/destroy/#{json["id"]}.json")
   end
 
 end

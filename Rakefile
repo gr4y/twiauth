@@ -11,7 +11,7 @@ begin
     gem.homepage = "http://github.com/gr4y/twiauth"
     gem.authors = ["Sascha Wessel"]
     gem.add_dependency "oauth", ">= 0.4.0"
-    gem.add_dependency "rspec", "1.3.0"
+    gem.add_dependency "rspec", ">= 2.5"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
@@ -30,15 +30,8 @@ Rake::RDocTask.new do |rdoc|
 end
 
 desc "run all specs"
-begin
-  gem 'rspec','1.3.0'
-  require 'spec/rake/spectask'
-  Spec::Rake::SpecTask.new do |t|
-    t.spec_files = FileList['spec/**/*_spec.rb']
-  end
-rescue LoadError
-  warn "[twiauth] rspec is not installed. install it with: gem install rspec --version 1.3.0"
-end
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec)
 
 task :test => [:check_dependencies, :spec]
 task :default => [:test, :build]

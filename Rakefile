@@ -19,14 +19,11 @@ rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
 end
 
-desc "generate rdoc"
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "twiauth #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+desc "generate documentation"
+require 'yard'
+YARD::Rake::YardocTask.new do |yard|
+  yard.files = ['lib/**/*.rb']
+  yard.options = ["--no-private"]
 end
 
 desc "run all specs"
@@ -34,4 +31,5 @@ require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new(:spec)
 
 task :test => [:check_dependencies, :spec]
-task :default => [:test, :build]
+task :doc => [:yard]
+task :default => [:test, :doc, :build]

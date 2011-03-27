@@ -17,9 +17,9 @@ tmtags
 coverage
 rdoc
 pkg
+doc
 
 ## PROJECT::SPECIFIC
 .idea
 **/config.yml
 access_token.yml
-*.pstore

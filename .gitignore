@@ -19,8 +19,8 @@ rdoc
 pkg
 doc
 .yardoc
-
-## PROJECT::SPECIFIC
+capybara*.html
 .idea
 **/*.yml
 spec/config/*.yml
+Gemfile.lock

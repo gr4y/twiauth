@@ -23,3 +23,4 @@ doc
 ## PROJECT::SPECIFIC
 .idea
 **/*.yml
+spec/config/*.yml

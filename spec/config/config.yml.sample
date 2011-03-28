@@ -1,2 +1,4 @@
+# copy this file and rename it to config.yml
+
 oauth_key: {your oauth key}
 oauth_secret: {your oauth secret}

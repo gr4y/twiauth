@@ -1,14 +1,12 @@
+require 'capybara'
+require 'akephalos'
 require 'twiauth'
 require 'yaml'
-require 'json'
 
-def pull_config
-  yml_config = YAML.load_file(File.dirname(__FILE__) + "/config.yml")
-  yml_config.each do |key, value|
-    instance_variable_set("@#{key}", value)
+RSpec.configure do |config|
+  config.before(:all) do
+    path = File.dirname(__FILE__)
+    @consumer = YAML::load_file("#{path}/config/config.yml")
+    @test = YAML::load_file("#{path}/config/test.yml")
   end
-end
-
-def parse_json(object)
-  JSON.parser.new(object).parse
 end

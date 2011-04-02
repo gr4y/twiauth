@@ -2,7 +2,7 @@ module TwiAuth
   # oauth client
   class Client
     
-    attr_accessor :consumer, :request_token, :access_token
+    attr_accessor :consumer, :request_token, :access_token, :parser
     
     # we only need to set the site
     # all other configuration is default configuration 
@@ -43,14 +43,14 @@ module TwiAuth
     # get something from the api
     # 
     def get(url, options = nil)
-      get_access_token.get(url).body
+      request(url, options, :get)
     end    
     
     #
     # post something to the api
     #
     def post(url, options = nil)
-      get_access_token.get(path, options).body
+      request(url, options, :post)
     end
     
     private
@@ -61,5 +61,26 @@ module TwiAuth
     def connect(key, secret)
       OAuth::Consumer.new(key, secret, TWITTER_OAUTH_SPEC)
     end  
+    
+    #
+    # send an post or get request with the specified options to the given url
+    #
+    def request(url, options = nil, http_method)
+      if http_method.eql?(:post)
+        response = get_access_token.post(url, options).body
+      elsif http_method.eql?(:get)
+        response = get_access_token.get(url).body
+      else
+        raise "invalid http_method"
+      end
+      parse_json(response)
+    end
+    
+    #
+    # parse the json string into an nice ruby hash
+    #
+    def parse_json(string)
+      Yajl::Parser.parse(string)
+    end   
   end
 end

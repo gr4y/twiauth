@@ -1,6 +1,6 @@
 require 'oauth'
 require 'twiauth/client'
-require 'json'
+require 'yajl'
 
 module TwiAuth
   LIBPATH = ::File.expand_path(::File.dirname(__FILE__)) + ::File::SEPARATOR

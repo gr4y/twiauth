@@ -14,7 +14,7 @@ module TwiAuth
     #   @client = TwiAuth::Client.new( {:key => @consumer_key, :secret => @consumer_secret})
     #
     def initialize(consumer, options = {})
-      # raise "options are nil" if options.nil?       
+      raise "options are nil" if options.nil?       
       self.access_token = options[:access_token]      
       if self.access_token.nil?
         raise "consumer could not be nil!" if consumer.nil?

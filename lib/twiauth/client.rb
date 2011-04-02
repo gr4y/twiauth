@@ -15,7 +15,7 @@ module TwiAuth
     #
     def initialize(consumer, options = {})
       # raise "options are nil" if options.nil?       
-      self.access_token = nil # options[:access_token]      
+      self.access_token = options[:access_token]      
       if self.access_token.nil?
         raise "consumer could not be nil!" if consumer.nil?
         self.consumer = connect(consumer['key'], consumer['secret'])

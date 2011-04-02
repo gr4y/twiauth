@@ -18,9 +18,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "oauth", "~> 0.4.0"
-  spec.add_dependency "rspec", "~> 2.5"
+  spec.add_dependency "yajl-ruby", "~> 0.8.2"
+  spec.add_dependency "rspec", "~> 2.5.0"
   spec.add_development_dependency "capybara", "~> 0.4.1"
   spec.add_development_dependency "akephalos", "~> 0.2.5"
-  
   # see http://www.rubygems.org/read/chapter/20 for additional settings
 end

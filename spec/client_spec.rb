@@ -62,10 +62,11 @@ describe TwiAuth::Client do
     (@client.public_methods.include? :post).should be_true
   end
   
- #  it "should post and delete a status" do
-#    response = @client.post("/1/statuses/update.json", {:status => 'test status'})
-#    json = parse_json(response.body)
-#    @client.post("/1/statuses/destroy/#{json["id"]}.json")
-#  end
+  it "should post and delete a status" do
+    response = @client.post("/1/statuses/update.json", {:status => 'test status'})
+    response.should_not be_nil
+    destroy_response = @client.post("/1/statuses/destroy/#{response['id']}.json")
+    destroy_response.should_not be_nil
+  end
   
 end

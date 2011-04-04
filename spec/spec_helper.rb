@@ -8,5 +8,6 @@ RSpec.configure do |config|
     path = File.dirname(__FILE__)
     @consumer = YAML::load_file("#{path}/config/config.yml")
     @test = YAML::load_file("#{path}/config/test.yml")
+    @options = { :access_token => nil }
   end
 end

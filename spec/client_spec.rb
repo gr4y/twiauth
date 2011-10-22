@@ -24,11 +24,11 @@ describe TwiAuth::Client do
   end
     
   it 'has an signin form' do
-    @session.has_selector?('div#signin_form').should be_true
+    @session.has_selector?('#oauth_form').should be_true
   end
     
   it 'fills out the form' do
-    @session.within('#signin_form') do
+    @session.within('#oauth_form') do
       @session.fill_in 'username_or_email', :with => @test['user']
       @session.fill_in 'password', :with => @test['password']
     end
@@ -67,6 +67,12 @@ describe TwiAuth::Client do
     response.should_not be_nil
     destroy_response = @client.post("/1/statuses/destroy/#{response['id']}.json")
     destroy_response.should_not be_nil
+  end
+  
+  it "should return an list of ids" do 
+    response = @client.get('/1/friends/ids.json', {:screen_name => 'gr4y'})
+    response.is_a?(Array).should be_true
+    response.size.should > 100
   end
   
 end
